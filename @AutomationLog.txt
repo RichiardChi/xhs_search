@@ -1,0 +1,4 @@
+2025-01-15 15:06:09.242 wechat_utils.py[81] <module> -> Find Control Timeout(10s): {ClassName: 'WeChatMainWndForPC', SubName: 'DeepSeek | 深度求索 - Google Chrome', ControlType: WindowControl}
+2025-01-15 15:06:53.189 wechat_utils.py[81] <module> -> Find Control Timeout(10s): {ClassName: 'Chrome_WidgetWin_1', SubName: 'DeepSeek | 深度求索 - Google Chrome', ControlType: WindowControl}
+2025-01-15 15:07:29.205 wechat_utils.py[81] <module> -> Find Control Timeout(10s): {SubName: 'DeepSeek | 深度求索 - Google Chrome', ControlType: WindowControl}
+2025-01-15 15:08:33.971 wechat_utils.py[81] <module> -> Find Control Timeout(10s): {SubName: 'Google Chrome', ControlType: WindowControl}
