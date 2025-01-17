@@ -46,54 +46,56 @@ if __name__ == '__main__':
                 # traceback.print_exc()
                 pass
             r.wait(3)
-            r.click('/html/body/div[2]/div[1]/div[1]/header/div[2]/div')
+            # 点击搜索
+            r.click('/html/body/div[2]/div[1]/div[1]/header/div[2]/div/div[2]')
             r.wait(5)
             # # 循环点击前2条
-            # for num in range(1,3):
-            #     #依次打开文章详情
-            #     r.click("//*[@id=\"global\"]/div[2]/div[2]/div/div[3]/section[%s]/div/a[2]"%num)
-            #     r.wait(3)
-            #     # 点击文章标题
-            #     # r.hover('/html/body/div[6]/div[1]/div[4]/div[2]/div[1]/div[1]')
-            #     # r.hover("//*[@id='detail-title']")
-            #     r.click("//*[@id='detail-title']")
-            #     r.wait(2)
-            #     # 获取屏幕分辨率
-            #     screenWidth, screenHeight = pyautogui.size()
-            #     print(screenWidth, screenHeight)
-            #     # 移动鼠标到屏幕中心
-            #     pyautogui.moveTo((screenWidth / 2) + screenWidth/10, screenHeight / 2)
-            #     # 鼠标向下滑动
-            #     scroll_down(-800,15)
-            #     r.wait(2)
-            #     # 点击复制链接
-            #     r.click("//*[@id=\"noteContainer\"]/div[4]/div[3]/div/div/div[1]/div[2]/div/div[2]")
-            #     r.wait(2)
-            #     # 从剪切板获取文本
-            #     share_link = pyperclip.paste()
-            #     print('文章链接：', share_link)
-            #     # 读取网页html
-            #     detail_html = r.read('page')
-            #     # print('读取网页：',detail_html)
-            #     html_parse_result = parse_xhs_note(detail_html)
-            #     print(html_parse_result)
-            #     #TODO 调用llm
-            #     ai_result_json = ask_llm(html_parse_result)
-            #     if len(ai_result_json)>0:
-            #         title = "文章标题：" + ai_result_json[0]['note_title'] + "\n"
-            #         print('文章标题：',title)
-            #         clue_desc_str = json_formatter.format_clue_list_to_str(ai_result_json)
-            #         print('大模型返回结果：', clue_desc_str)
-            #         message =  f'{share_link}\n  ------------------------\n{clue_desc_str}'
-            #         print('微信消息：',message)
-            #         # 发送微信消息
-            #         for user in config_json['at_user_list']:
-            #             wechat_utils.send_wechat_msg(user, [message])
-            #     # 激活浏览器窗口
-            #     activate_window('.*小红书.*')
-            #     # 返回到查询页面
-            #     r.click("//div[@class='close close-mask-dark']")
-            if index == 2 :
+            for num in range(1,3):
+                #依次打开文章详情
+                r.click("//*[@id=\"global\"]/div[2]/div[2]/div/div[3]/section[%s]/div/a[2]"%num)
+                r.wait(3)
+                # 点击文章标题
+                # r.hover('/html/body/div[6]/div[1]/div[4]/div[2]/div[1]/div[1]')
+                # r.hover("//*[@id='detail-title']")
+                r.click("//*[@id='detail-title']")
+                r.wait(2)
+                # 获取屏幕分辨率
+                screenWidth, screenHeight = pyautogui.size()
+                print(screenWidth, screenHeight)
+                # 移动鼠标到屏幕中心
+                pyautogui.moveTo((screenWidth / 2) + screenWidth/10, screenHeight / 2)
+                # 鼠标向下滑动
+                scroll_down(-800,15)
+                r.wait(2)
+                # 点击复制链接
+                r.click("//*[@id=\"noteContainer\"]/div[4]/div[3]/div/div/div[1]/div[2]/div/div[2]")
+                r.wait(2)
+                # 从剪切板获取文本
+                share_link = pyperclip.paste()
+                print('文章链接：', share_link)
+                # 读取网页html
+                detail_html = r.read('page')
+                # print('读取网页：',detail_html)
+                html_parse_result = parse_xhs_note(detail_html)
+                print(html_parse_result)
+                #TODO 调用llm
+                ai_result_json = ask_llm(html_parse_result)
+                if len(ai_result_json)>0:
+                    title = "文章标题：" + ai_result_json[0]['note_title'] + "\n"
+                    print('文章标题：',title)
+                    clue_desc_str = json_formatter.format_clue_list_to_str(ai_result_json)
+                    print('大模型返回结果：', clue_desc_str)
+                    message =  f'{share_link}\n  ------------------------\n{clue_desc_str}'
+                    print('微信消息：',message)
+                    # 发送微信消息
+                    for user in config_json['at_user_list']:
+                        wechat_utils.send_wechat_msg(user, [message])
+                # 激活浏览器窗口
+                activate_window('.*小红书.*')
+                # 返回到查询页面
+                r.click("//div[@class='close close-mask-dark']")
+            # 测试搜索两个关键词
+            if index == 1 :
                 break
     except Exception as e:
         traceback.print_exc()

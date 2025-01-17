@@ -5,6 +5,6 @@
 	"at_msg_list": ["请关注","请叫我雷锋","你看吧"],
 	"llm_config": 
 				{
-					"api_key": "sk-6708ead19f724d02a42d3bb0fdd1cc54"
+					"api_key": ""
 				}
 }
