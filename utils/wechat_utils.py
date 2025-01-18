@@ -10,12 +10,11 @@ from utils.common_utils import activate_window
 def send_wechat_msg(wechat_name:str='文件传输助手',messages:[]=['你好']):
     # 定位微信的主窗口
     wechat_window = auto.WindowControl(searchDepth=1, ClassName='WeChatMainWndForPC', SubName='微信')
-
     # 激活窗口
     wechat_window.SetActive()
     # # 将窗口设置为最顶层，确保它在所有其他窗口之上
     # wechat_window.SetTopmost(True)
-    time.sleep(1)
+    time.sleep(3)
     # 定位微信的搜索框并输入搜索内容
     wechat_window.ButtonControl(Name="通讯录").Click()
     search_box = wechat_window.EditControl(Name="搜索")
